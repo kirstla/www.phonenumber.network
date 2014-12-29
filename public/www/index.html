@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+	<head>
+		<title>www.inclusivedv.com</title>
+		<link rel="stylesheet" href="/0.16/layout.css" type="text/css" />
+		<link rel="stylesheet" href="/0.16/default.css" type="text/css" />
+		<meta charset="UTF-8" />
+	</head>
+	<body>
+		
+		<div id="head"><h1>Inclusive Development Company</h1><h2>More and more, with less and less.</h2></div>
+		
+		<div id="counters" ng-controller="CounterController" ng-include="'/0.16/modules/counter/templates/counter.html'"></div>
+		
+		<div class="column-mask layout">
+			<div class="column-wrapper one">
+				<div class="column-wrapper two">
+					<div class="column-content one">
+						<div class="wrapper" ng-view ng-hide="routeLoading"></div>
+						<div id="route_loading" ng-show="routeLoading">
+							<img src="/0.16/famfamfam/hourglass.png" alt="" />
+							Please Wait
+						</div>
+					</div>
+					<div class="column-content two">
+						<div class="wrapper" ng-controller="MenuController" ng-include="'/0.16/templates/menu.html'"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="auth" ng-controller="AuthController" ng-include="'/0.16/modules/user/templates/auth.html'"></div>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js" type="text/javascript"></script>
+		<script src="/0.16/app.min.js" type="text/javascript"></script>
+		<script type="text/javascript">
+		
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-16873337-1']);
+		  _gaq.push(['_setDomainName', 'inclusivedv.com']);
+		  _gaq.push(['_trackPageview']);
+		
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+		
+		</script>
+	</body>
+</html>
