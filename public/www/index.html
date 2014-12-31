@@ -1,51 +1,124 @@
-<!DOCTYPE html>
-<html lang="en" ng-app="app">
+<html lang="en" ng-app="application" class="ng-scope">
 	<head>
+		<style type="text/css">
+			@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-animate){display:none !important;}ng\:form{display:block;}
+		</style>
+		<base href="https://phonenumber.network/">
+		<link rel="stylesheet" href="/0.1.0/css/layout.css" type="text/css">
+		<meta charset="UTF-8">
 		<title>www.phonenumber.network</title>
-		<link rel="stylesheet" href="/0.16/layout.css" type="text/css" />
-		<link rel="stylesheet" href="/0.16/default.css" type="text/css" />
-		<meta charset="UTF-8" />
 	</head>
 	<body>
-		
-		<div id="head"><h1>Phone Number Network</h1><h2>A Private Phone Number When You Need It.</h2></div>
-		
-		<div id="counters" ng-controller="CounterController" ng-include="'/0.16/modules/counter/templates/counter.html'"></div>
-		
-		<div class="column-mask layout">
-			<div class="column-wrapper one">
-				<div class="column-wrapper two">
-					<div class="column-content one">
-						<div class="wrapper" ng-view ng-hide="routeLoading"></div>
-						<div id="route_loading" ng-show="routeLoading">
-							<img src="/0.16/famfamfam/hourglass.png" alt="" />
-							Please Wait
+		<!-- ngInclude: 'templates/header.html' -->
+		<header ng-controller="HeaderController" ng-include="'templates/header.html'" class="ng-scope">
+			<h1 class="ng-scope">
+				<a href="/">Phone Number Network</a>
+			</h1>
+				<div class="ng-scope">
+					<!-- ngIf: tracker -->
+					<div id="authentication">
+						<!-- ngIf: !user --><!-- ngIf: user -->
+						<ul ng-if="user" class="ng-scope">
+							<li><a ng-href="/user" class="ng-binding" href="/user">Kirstla Allred</a></li>
+							<li><a ng-click="logout()">Logout</a></li>
+						</ul><!-- end ngIf: user -->
+					
+					</div>
+				</div>
+		</header>
+		<section>
+			<!-- ngView:  -->
+			<div ng-view="" class="ng-scope">
+				<div class="container ng-isolate-scope" ng-class="size" border="" wrapper="">
+					<div class="border" ng-class="border">
+						<div class="wrapper" ng-class="wrapper">
+							<div ng-transclude="">
+								<span class="ng-binding ng-scope">
+									Private / temporary phone numbers</br></br>
+									Keep your own phone number private, and give out your temporary phone number to manage your event. 
+									This way you won't get bombarded with phone calls once your event is over.
+									</br>
+									</br>
+									<u>Reasons to Get a Private Number</u></br>
+									<ul>
+										<li>Hosting an Event, such as charity auction, wedding</li>
+										<li>Conference calls</li>
+										<li>Selling your home, automobile etc. Put your temporary number in the paper and keep your personal phone number private</li>
+										<li>Managing a Group, such as book club, PTA, church group or boy scouts</li>
+										<li>Give out while dating or meeting new friends</li>
+										<li></li>
+										<li></li>
+										<li></li>
+									</ul>
+								</span>
+							</div>
+							<div class="clear">
+							</div>
 						</div>
 					</div>
-					<div class="column-content two">
-						<div class="wrapper" ng-controller="MenuController" ng-include="'/0.16/templates/menu.html'"></div>
+				</div>
+			</div>
+			<div class="clear">
+			</div>
+		</section>
+		<!-- ngInclude: 'templates/footer.html' -->
+		<footer ng-controller="FooterController" ng-include="'templates/footer.html'" class="ng-scope">
+			<h6 class="ng-scope">Phone Number Network</h6>
+			<div class="relative ng-scope">
+				<ul id="messages" ng-show="messages.length" class="ng-hide">
+					<!-- ngRepeat: message in messages -->
+				</ul>
+				<ul id="exceptions" ng-show="exceptions.length" class="ng-hide">
+					<!-- ngRepeat: exception in exceptions -->
+				</ul>
+			</div>
+		</footer>
+		<div id="login" ng-controller="AuthController" ng-show="show.login" class="ng-scope ng-hide">
+			<div class="container ng-isolate-scope" ng-class="size" border="" wrapper="">
+				<div class="border" ng-class="border">
+					<div class="wrapper" ng-class="wrapper">
+						<div ng-transclude="">
+							<h1 class="ng-scope">Authenticate</h1>
+							<form class="incdev-form ng-valid-email ng-dirty ng-valid-parse ng-valid ng-valid-required" ng-submit="submit()" name="form" submit="authenticate()" novalidate="true">
+							<div ng-transclude="">
+								<dl class="ng-scope">
+								<dt>
+									<label for="email">Email</label>
+								</dt>
+								<dd>
+									<input type="email" name="email" ng-model="credentials.email" ng-required="true" focus="focus" class="ng-isolate-scope ng-valid-email ng-touched ng-dirty ng-valid ng-valid-required" required="required">
+									<ul class="error ng-hide" ng-show="form.email.$invalid">
+										<li ng-show="form.email.$error.required" class="ng-hide">Required</li>
+										<li ng-show="form.email.$error.email" class="ng-hide">Not Valid Email Address</li>
+									</ul>
+								</dd>
+								</dl>
+								<dl class="ng-scope">
+									<dt><label for="password">Password</label></dt>
+									<dd>
+										<input type="password" name="password" ng-model="credentials.password" ng-required="true" class="ng-untouched ng-dirty ng-valid-parse ng-valid ng-valid-required" required="required">
+										<ul class="error ng-hide" ng-show="form.password.$invalid">
+											<li ng-show="form.password.$error.required" class="ng-hide">Required</li>
+										</ul>
+									</dd>
+								</dl>
+								<dl class="ng-scope">
+									<dt>&nbsp;</dt>
+									<dd><button type="submit" ng-disabled="form.$invalid || form.$pristine">Login</button>
+									</dd>
+								</dl>
+							</div>
+							<div class="submitting ng-hide" ng-show="submitting">
+								<img src="/0.1.0/images/route-loader.gif">
+							</div>
+							</form>
+						</div>
+						<div class="clear">
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		
-		<div id="auth" ng-controller="AuthController" ng-include="'/0.16/modules/user/templates/auth.html'"></div>
-		
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js" type="text/javascript"></script>
-		<script src="/0.16/app.min.js" type="text/javascript"></script>
-		<script type="text/javascript">
-		
-		  var _gaq = _gaq || [];
-		  _gaq.push(['_setAccount', 'UA-16873337-1']);
-		  _gaq.push(['_setDomainName', 'inclusivedv.com']);
-		  _gaq.push(['_trackPageview']);
-		
-		  (function() {
-		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		  })();
-		
-		</script>
+		<script src="/0.1.0/application.js" type="text/javascript"></script>
 	</body>
 </html>
